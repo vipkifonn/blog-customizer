@@ -77,16 +77,17 @@
 		]
 	},
 	"dependencies": {
-		"clsx": "^2.1.0",
+		"clsx": "^2.1.1",
+		"global": "^4.4.0",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"yarn": "^1.22.22"
 	},
 	"lint-staged": {
 		"*.{css,scss}": "npm run stylelint:fix",
 		"*.{js,jsx,ts,tsx}": "npm run lint",
 		"*.{js,jsx,ts,tsx,json,css,scss,md}": "npm run format"
 	},
-	
 	"config": {
 		"commitizen": {
 			"path": "./node_modules/cz-conventional-changelog"
