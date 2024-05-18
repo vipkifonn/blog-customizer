@@ -38,17 +38,17 @@ export const ArticleParamsForm = ({
 	setArticleState,
 }: ArticleParamsFormProps) => {
 	const [formState, formValue] = useState(defaultArticleState);
-	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 	const openClose = () => {
-		setIsOpen((windowIsOpen) => !windowIsOpen);
+		setIsMenuOpen((windowIsOpen) => !windowIsOpen);
 	};
 
 	useOutsideClickClose({
-		isOpen,
+		isOpen: isMenuOpen,
 		rootRef,
-		onClose: () => setIsOpen(false),
-		onChange: (newValue: boolean) => setIsOpen(newValue),
+		onClose: () => setIsMenuOpen(false),
+		onChange: (newValue: boolean) => setIsMenuOpen(newValue),
 	});
 
 	const handleChange = (type: keyof typeof articleState, value: OptionType) => {
@@ -70,9 +70,9 @@ export const ArticleParamsForm = ({
 
 	return (
 		<>
-			<ArrowButton onClick={openClose} isOpen={isOpen} />
+			<ArrowButton onClick={openClose} isOpen={isMenuOpen} />
 			<aside
-				className={clsx(styles.container, isOpen && styles.container_open)}
+				className={clsx(styles.container, isMenuOpen && styles.container_open)}
 				ref={rootRef}>
 				<form className={styles.form} onSubmit={handleFormSubmit}>
 					<Text as='h2' size={31} weight={800} align='left' uppercase={true}>
@@ -110,7 +110,7 @@ export const ArticleParamsForm = ({
 						}
 					/>
 					<Select
-						title='цвет фона'
+						title='ширина контента'
 						options={contentWidthArr}
 						selected={formState.contentWidth}
 						onChange={(contentWidth) =>
